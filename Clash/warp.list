@@ -51,7 +51,7 @@ IP-CIDR6,2a06:98c0::/29,no-resolve
 IP-CIDR6,2c0f:f248::/32,no-resolve
 DOMAIN,browser-intake-datadoghq.com
 DOMAIN,static.cloudflareinsights.com
-DOMAIN-SUFFIX,ai.com
+DOMAIN-SUFFIX,missav.com
 DOMAIN-SUFFIX,algolia.net
 DOMAIN-SUFFIX,api.statsig.com
 DOMAIN-SUFFIX,auth0.com
