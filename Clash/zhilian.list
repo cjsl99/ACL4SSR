@@ -1,3 +1,11 @@
 DOMAIN-SUFFIX,momoyu.cc
 DOMAIN-SUFFIX,haoqiutiyu.com
 DOMAIN-SUFFIX,yoozhibo.net
+PROCESS-NAME,com.kwai.theater
+PROCESS-NAME,com.dragon.read
+PROCESS-NAME,com.ss.android.article.lite
+PROCESS-NAME,com.ss.android.ugc.livelite
+PROCESS-NAME,com.ss.android.ugc.live
+PROCESS-NAME,com.ss.android.ugc.aweme.lite
+PROCESS-NAME,com.kuaishou.nebula
+PROCESS-NAME,com.smile.gifmaker
