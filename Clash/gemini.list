@@ -1,1 +1,20 @@
+# ==== Gemini 官方站点 ====
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN-SUFFIX,bard.google.com
 
+# ==== Gemini API & 模型调用 ====
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,ai.googleusercontent.com
+DOMAIN-SUFFIX,content-aisandbox.googleapis.com
+
+# ==== Google AI 相关 ====
+DOMAIN-SUFFIX,ai.google
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,withgoogle.com
+
+# ==== 兜底关键字匹配 ====
+DOMAIN-KEYWORD,gemini
+DOMAIN-KEYWORD,aistudio
+DOMAIN-KEYWORD,generativelanguage
+DOMAIN-KEYWORD,deepmind
