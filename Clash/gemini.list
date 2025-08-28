@@ -8,6 +8,10 @@ DOMAIN-SUFFIX,generativelanguage.googleapis.com
 DOMAIN-SUFFIX,ai.googleusercontent.com
 DOMAIN-SUFFIX,content-aisandbox.googleapis.com
 
+# ==== 登录鉴权相关（App 必需） ====
+DOMAIN-SUFFIX,oauth.googleusercontent.com
+DOMAIN-SUFFIX,play.googleapis.com
+
 # ==== Google AI 相关 ====
 DOMAIN-SUFFIX,ai.google
 DOMAIN-SUFFIX,deepmind.com
@@ -18,3 +22,6 @@ DOMAIN-KEYWORD,gemini
 DOMAIN-KEYWORD,aistudio
 DOMAIN-KEYWORD,generativelanguage
 DOMAIN-KEYWORD,deepmind
+
+# ==== 安卓 Gemini App 包名 ====
+PROCESS-NAME,com.google.android.apps.bard
