@@ -8,3 +8,5 @@ PROCESS-NAME,com.ss.android.ugc.live
 PROCESS-NAME,com.ss.android.ugc.aweme.lite
 PROCESS-NAME,com.kuaishou.nebula
 PROCESS-NAME,com.smile.gifmaker
+DOMAIN,api.installer.xiaomi.com
+PROCESS-NAME,com.tencent.mm
