@@ -3,3 +3,14 @@ DOMAIN,api.installer.xiaomi.com
 PROCESS-NAME,cn.toside.music.mobile
 PROCESS-NAME,com.fongmi.android.tv
 DOMAIN-KEYWORD,sportsteam
+
+DOMAIN-SUFFIX,xtracloud.net
+
+# IMS / VoWiFi MCC/MNC
+DOMAIN-SUFFIX,3gppnetwork.org
+DOMAIN-SUFFIX,ims
+DOMAIN-SUFFIX,epdg
+DOMAIN-SUFFIX,wlan.epc
+DOMAIN-SUFFIX,ims.mnc
+DOMAIN-SUFFIX,ims.mcc
+DOMAIN-SUFFIX,epdg.epc
