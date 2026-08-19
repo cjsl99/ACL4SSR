@@ -1,44 +1,43 @@
-name: Convert Private List to MRS
+name: Update and Convert Private Ruleset
 
 on:
-  push:
-    paths:
-      - 'Clash/private.list'
   schedule:
-    # 每天 UTC 04:30（北京时间 12:30）运行，刚好在拉取 private.list 的任务之后
-    - cron: '30 4 * * *'
-  workflow_dispatch: # 支持手动触发
+    # 每 24 小时自动运行一次（每天 UTC 时间 04:00，即北京时间 12:00）
+    - cron: '0 4 * * *'
+  workflow_dispatch: # 支持手动点击触发
 
 jobs:
-  convert-ruleset:
+  update-and-convert:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 赋予写权限以推送 private.mrs 文件
+      contents: write # 赋予 Action 提交更新到仓库的写权限
 
     steps:
       - name: 检出仓库代码
         uses: actions/checkout@v4
 
-      - name: 下载并配置最新版 Mihomo
+      - name: 1. 拉取并过滤规则文件 (.list)
+        run: |
+          # 确保 Clash 目录存在
+          mkdir -p Clash
+          
+          # 下载规则，剔除包含 100.64.0.0/10 的行，并保存到 Clash/private.list
+          curl -sSL "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/private.list" | grep -v '100\.64\.0\.0/10' > Clash/private.list
+
+      - name: 2. 下载并配置最新版 Mihomo
         run: |
           LATEST_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.assets[] | select(.name | contains("linux-amd64") and (contains("compatible") | not) and (endswith(".gz"))) | .browser_download_url' | head -n 1)
           curl -sSL "$LATEST_URL" | gunzip > mihomo
           chmod +x mihomo
 
-      - name: 转换 private.list 为 private.mrs
+      - name: 3. 编译 .list 为二进制 .mrs
         run: |
-          if [ -f "Clash/private.list" ]; then
-            # private.list 全为纯 IP/CIDR 规则，必须指定 behavior 为 ipcidr
-            ./mihomo convert-ruleset ipcidr text Clash/private.list Clash/private.mrs
-            echo "转换成功: Clash/private.list -> Clash/private.mrs"
-          else
-            echo "错误: 未找到 Clash/private.list"
-            exit 1
-          fi
+          # private.list 属于 IP/CIDR 规则，指定 behavior 为 ipcidr
+          ./mihomo convert-ruleset ipcidr text Clash/private.list Clash/private.mrs
 
-      - name: 提交并推送 private.mrs
+      - name: 4. 一键提交并推送 .list 与 .mrs 文件
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "auto: convert private.list to private.mrs"
+          commit_message: "auto: update private.list (exclude 100.64.0.0/10) & convert to private.mrs"
           branch: main
-          file_pattern: 'Clash/private.mrs'
+          file_pattern: 'Clash/private.list Clash/private.mrs'
