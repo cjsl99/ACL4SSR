@@ -41,6 +41,7 @@ jobs:
               for file in files:
                   if file.endswith('.list'):
                       filepath = os.path.join(root, file)
+                      # os.path.splitext 会保持原有路径，仅替换扩展名，确保输出在同目录
                       mrs_path = os.path.splitext(filepath)[0] + '.mrs'
                       
                       behavior = 'domain'
@@ -68,4 +69,4 @@ jobs:
         with:
           commit_message: "auto: convert .list to .mrs"
           branch: main
-          file_pattern: 'Clash/*.mrs Clash/**/*.mrs'
+          file_pattern: 'Clash/' # 递归提交 Clash 文件夹下的所有变动（不论单层或多层子目录）
