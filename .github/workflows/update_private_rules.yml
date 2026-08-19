@@ -1,0 +1,32 @@
+name: Update Private Ruleset
+
+on:
+  schedule:
+    # 每 24 小时自动运行一次（每天 UTC 时间 04:00，即北京时间 12:00）
+    - cron: '0 4 * * *'
+  workflow_dispatch: # 支持在 GitHub 页面手动点击触发运行
+
+jobs:
+  update-rule:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 赋予 Action 提交更新到仓库的写权限
+
+    steps:
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      - name: 拉取并过滤规则文件
+        run: |
+          # 确保 Clash 目录存在
+          mkdir -p Clash
+          
+          # 下载规则，剔除包含 100.64.0.0/10 的行，并保存到 Clash/private.list
+          curl -sSL "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo-lite/geoip/private.list" | grep -v '100\.64\.0\.0/10' > Clash/private.list
+
+      - name: 自动提交更改并推送到 main 分支
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "auto: update private.list (exclude 100.64.0.0/10)"
+          branch: main
+          file_pattern: 'Clash/private.list'
