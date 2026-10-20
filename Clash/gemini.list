@@ -1,5 +1,8 @@
 # 内容：Gemini
 # 数量：13条
+DOMAIN,signaler-pa.clients6.google.com
+DOMAIN,signaler-pa.googleapis.com
+DOMAIN,robinfrontend-pa.googleapis.com
 DOMAIN-KEYWORD,colab
 DOMAIN-KEYWORD,developerprofiles
 DOMAIN-KEYWORD,generativelanguage
