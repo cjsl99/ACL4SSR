@@ -1,5 +1,8 @@
 # 内容：Gemini
 # 数量：13条
+# 内容：Gemini 地区判定与核心依赖（补全版）
+# 数量：4条
+DOMAIN,waa-pa.clients6.google.com
 DOMAIN,signaler-pa.clients6.google.com
 DOMAIN,signaler-pa.googleapis.com
 DOMAIN,robinfrontend-pa.googleapis.com
